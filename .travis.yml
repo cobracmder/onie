@@ -1,0 +1,18 @@
+language: c
+cache:
+    apt: true
+    directories:
+        - build/download
+        - build/crosstool-ng
+        - build/x-tools
+before_install:
+    - unset LD_LIBRARY_PATH
+install:
+    - cd build-config
+    - make debian-prepare-build-host
+before_script:
+    - cd ..
+    - git config --global user.email "autobot@ocproject.net"
+    - git config --global user.name "AutoBot"
+script:
+    - travis_wait python contrib/autobuild/build-onie.py -b kvm_x86_64 -m "\-j"
