@@ -15,4 +15,4 @@ before_script:
     - git config --global user.email "autobot@ocproject.net"
     - git config --global user.name "AutoBot"
 script:
-    - travis_wait python contrib/autobuild/build-onie.py -b kvm_x86_64 -m "\-j"
+    - python contrib/autobuild/build-onie.py -b kvm_x86_64 -m "\-j"
