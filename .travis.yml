@@ -11,8 +11,7 @@ install:
     - cd build-config
     - make debian-prepare-build-host
 before_script:
-    - cd ..
     - git config --global user.email "autobot@ocproject.net"
     - git config --global user.name "AutoBot"
 script:
-    - python contrib/autobuild/build-onie.py -b kvm_x86_64 -m "\-j"
+    - make -j MACHINE=kvm_x86_64 all
